@@ -1,18 +1,29 @@
-import * as Blocks from "./Blocks";
+import Section from "./Section";
+import Paragraph from "./Paragraph";
+import Note from "./Note";
+import List from "./List";
+import Image from "./Image";
+import Divider from "./Divider";
+import Hadith from "./Hadith";
+import Quote from "./Quote";
+import Ayah from "./Ayah";
+import Warning from "./Warning";
+import Audio from "./Audio";
+import Footnote from "./Footnote";
 
 export const BLOCK_MAP = {
-  section: Blocks.Section,
-  paragraph: Blocks.Paragraph,
-  note: Blocks.Note,
-  list: Blocks.List,
-  image: Blocks.Image,
-  divider: Blocks.Divider,
-  hadith: Blocks.Hadith,
-  quote: Blocks.Quote,
-  ayah: Blocks.Ayah,
-  warning: Blocks.Warning,
-  audio: Blocks.Audio,
-  footnote: Blocks.Footnote,
+  section: Section,
+  paragraph: Paragraph,
+  note: Note,
+  list: List,
+  image: Image,
+  divider: Divider,
+  hadith: Hadith,
+  quote: Quote,
+  ayah: Ayah,
+  warning: Warning,
+  audio: Audio,
+  footnote: Footnote,
 };
 
 export function renderBlock(block, key) {
@@ -33,4 +44,3 @@ export function renderBlock(block, key) {
     />
   );
 }
-
