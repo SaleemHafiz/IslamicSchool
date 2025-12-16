@@ -142,6 +142,48 @@ p {
 .p-lg { padding: var(--spacing-lg); }
 .p-xl { padding: var(--spacing-xl); }
 
+
+/* ===========================
+   PARAGRAPH
+=========================== */
+
+.paragraph {
+  display: flex;
+  flex-wrap: wrap; /* wrap children on smaller screens */
+  gap: 1rem;       /* space between text and children */
+}
+
+.paragraph-block {
+  display: flex;
+  flex-wrap: wrap;        /* wrap children if container is too small */
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.paragraph-text {
+  flex: 1 1 200px;        /* text takes available space */
+  min-width: 150px;
+}
+
+.paragraph-child {
+  flex-shrink: 0;         /* prevent child from shrinking too much */
+  min-width: 150px;       /* ensures child is visible */
+  max-width: 40%;         /* optional, responsive max width */
+}
+
+
+.paragraph-child img {
+  width: 100%;          /* fill the child container */
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+.paragraph-child .card {
+  width: 100%;          /* notes, quotes, etc., fill the child container */
+}
+
+
 /* ===========================
    CARD & CONTAINER
 =========================== */
