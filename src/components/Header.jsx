@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { usePreferences } from "../contexts/UserPreferencesContext";
 
 export default function Header({ meta }) {
   const location = useLocation();
+  const { theme, setTheme, language, setLanguage, level, setLevel, subject, setSubject } = usePreferences();
 
-  const [selectedLang, setSelectedLang] = useState(meta.languages[0]);
-  const [selectedLevel, setSelectedLevel] = useState(meta.levels[0]);
-  const [selectedSubject, setSelectedSubject] = useState(meta.subjects[0]);
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
-  const getLinkClass = (path) =>
-    location.pathname === path ? "active" : "";
+  const getLinkClass = (path) => (location.pathname === path ? "active" : "");
 
   return (
     <header className="header-container">
@@ -22,17 +23,28 @@ export default function Header({ meta }) {
       </nav>
 
       <div className="filters">
-        <select value={selectedLang} onChange={(e) => setSelectedLang(e.target.value)}>
-          {meta.languages.map((lang) => <option key={lang} value={lang}>{lang.toUpperCase()}</option>)}
+        <select value={language} onChange={(e) => setLanguage(e.target.value)}>
+          {meta.languages.map((lang) => (
+            <option key={lang} value={lang}>{lang.toUpperCase()}</option>
+          ))}
         </select>
 
-        <select value={selectedLevel} onChange={(e) => setSelectedLevel(e.target.value)}>
-          {meta.levels.map((lvl) => <option key={lvl} value={lvl}>{lvl.charAt(0).toUpperCase() + lvl.slice(1)}</option>)}
+        <select value={level} onChange={(e) => setLevel(e.target.value)}>
+          {meta.levels.map((lvl) => (
+            <option key={lvl} value={lvl}>{lvl.charAt(0).toUpperCase() + lvl.slice(1)}</option>
+          ))}
         </select>
 
-        <select value={selectedSubject} onChange={(e) => setSelectedSubject(e.target.value)}>
-          {meta.subjects.map((subj) => <option key={subj} value={subj}>{subj}</option>)}
+        <select value={subject} onChange={(e) => setSubject(e.target.value)}>
+          {meta.subjects.map((subj) => (
+            <option key={subj} value={subj}>{subj}</option>
+          ))}
         </select>
+
+        {/* Theme toggle using FontAwesome */}
+        <button onClick={toggleTheme} className="theme-toggle">
+          <FontAwesomeIcon icon={theme === "light" ? faSun : faMoon} />
+        </button>
       </div>
     </header>
   );

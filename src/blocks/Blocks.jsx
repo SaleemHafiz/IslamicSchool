@@ -53,20 +53,22 @@ export function Paragraph({ payload, renderBlock }) {
 
   return (
     <div className="paragraph-block">
-      {/* Inline text */}
-      {Array.isArray(payload.inlines) && (
+      {hasChildren && (
+        <div className="paragraph-children-column">
+          {payload.children.map((child, i) => (
+            <div key={i} className="paragraph-child">
+              {renderBlock ? renderBlock(child, i) : null}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {Array.isArray(payload.inlines) && payload.inlines.length > 0 && (
         <div className="paragraph-text">
           <InlineRenderer inlines={payload.inlines} />
         </div>
       )}
-
-      {/* Child blocks like Image, Note */}
-      {hasChildren &&
-        payload.children.map((child, i) => (
-          <div key={i} className="paragraph-child">
-            {renderBlock ? renderBlock(child, i) : null}
-          </div>
-        ))}
+      <div style={{ clear: "both" }} /> {/* ensures children column doesn't overflow */}
     </div>
   );
 }

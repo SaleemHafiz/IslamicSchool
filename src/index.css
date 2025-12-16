@@ -55,7 +55,7 @@
 /* ===========================
    DARK THEME
 =========================== */
-body[data-theme="dark"] {
+html[data-theme="dark"] {
   --color-text: #f3f4f6;
   --color-text-muted: #d1d5db;
   --color-accent: #60a5fa;
@@ -76,6 +76,7 @@ body[data-theme="dark"] {
   padding: 0;
   box-sizing: border-box;
   font-size: calc(16px * var(--zoom));
+  transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 body {
@@ -83,7 +84,6 @@ body {
   color: var(--color-text);
   font-family: var(--font-english);
   line-height: 1.7;
-  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 /* ===========================
@@ -93,7 +93,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-english);
   margin-bottom: var(--spacing-sm);
   color: var(--color-accent);
-  transition: color var(--transition-speed);
 }
 
 p {
@@ -108,11 +107,10 @@ p {
 =========================== */
 .text-normal { color: var(--color-text); }
 .text-muted { color: var(--color-text-muted); }
-.text-accent { color: var(--color-accent); transition: color var(--transition-speed); }
+.text-accent { color: var(--color-accent); }
 .text-note { color: var(--color-note); }
 .text-quote { color: var(--color-quote); }
 
-/* Hover effect for accent text */
 .text-accent:hover { color: #1e40af; cursor: pointer; text-decoration: underline; }
 
 /* ===========================
@@ -120,12 +118,9 @@ p {
 =========================== */
 .bg-normal { background-color: var(--color-bg); }
 .bg-accent { background-color: var(--color-bg-accent); }
-.bg-card { background-color: var(--color-bg-accent); transition: transform var(--transition-speed); }
-.bg-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
-.bg-note { background-color: var(--color-bg-note); transition: transform var(--transition-speed); }
-.bg-note:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-.bg-quote { background-color: var(--color-bg-quote); transition: transform var(--transition-speed); }
-.bg-quote:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.bg-card { background-color: var(--color-bg-accent); }
+.bg-note { background-color: var(--color-bg-note); }
+.bg-quote { background-color: var(--color-bg-quote); }
 
 /* ===========================
    SPACING UTILITIES
@@ -142,47 +137,53 @@ p {
 .p-lg { padding: var(--spacing-lg); }
 .p-xl { padding: var(--spacing-xl); }
 
-
 /* ===========================
    PARAGRAPH
 =========================== */
-
-.paragraph {
-  display: flex;
-  flex-wrap: wrap; /* wrap children on smaller screens */
-  gap: 1rem;       /* space between text and children */
-}
-
 .paragraph-block {
-  display: flex;
-  flex-wrap: wrap;        /* wrap children if container is too small */
-  gap: 1rem;
-  align-items: flex-start;
+  position: relative;
+  margin-bottom: 2rem;
+  font-family: "Comic Neue", sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
 }
 
-.paragraph-text {
-  flex: 1 1 200px;        /* text takes available space */
-  min-width: 150px;
+@media (min-width: 768px) {
+  .paragraph-children-column {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin-left: 1rem;
+  }
+
+  .paragraph-text {
+    text-align: justify;
+    text-justify: inter-word;
+  }
 }
 
-.paragraph-child {
-  flex-shrink: 0;         /* prevent child from shrinking too much */
-  min-width: 150px;       /* ensures child is visible */
-  max-width: 40%;         /* optional, responsive max width */
-}
+@media (max-width: 767px) {
+  .paragraph-children-column {
+    float: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
 
+  .paragraph-text { margin: 0; }
+}
 
 .paragraph-child img {
-  width: 100%;          /* fill the child container */
+  width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px;
 }
-
-.paragraph-child .card {
-  width: 100%;          /* notes, quotes, etc., fill the child container */
-}
-
 
 /* ===========================
    CARD & CONTAINER
@@ -196,22 +197,9 @@ p {
   cursor: default;
 }
 
-/* Interactive card hover */
 .card:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-}
-
-/* ===========================
-   BORDER & DIVIDER
-=========================== */
-.border { border: 1px solid var(--color-bg-accent); }
-.divider {
-  height: 3px;
-  background-color: var(--color-accent);
-  margin: var(--spacing-md) 0;
-  border-radius: 3px;
-  transition: background-color var(--transition-speed);
 }
 
 /* ===========================
@@ -226,7 +214,6 @@ p {
   padding: var(--spacing-md);
   background-color: var(--color-bg-accent);
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
 .header-container .logo {
@@ -234,14 +221,9 @@ p {
   font-weight: 700;
   font-size: 1.6rem;
   color: var(--color-accent);
-  transition: color var(--transition-speed);
 }
 
-.nav-links {
-  display: flex;
-  gap: var(--spacing-sm);
-  flex-wrap: wrap;
-}
+.nav-links { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
 
 .nav-links a {
   padding: 0.5rem 1rem;
@@ -249,7 +231,6 @@ p {
   font-weight: 500;
   text-decoration: none;
   color: var(--color-text);
-  transition: all var(--transition-speed);
 }
 
 .nav-links a:hover,
@@ -259,11 +240,7 @@ p {
   transform: translateY(-2px);
 }
 
-.filters {
-  display: flex;
-  gap: var(--spacing-sm);
-  flex-wrap: wrap;
-}
+.filters { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; }
 
 .filters select {
   padding: 0.4rem 0.6rem;
@@ -273,7 +250,6 @@ p {
   color: var(--color-text);
   font-family: var(--font-english);
   font-size: 0.9rem;
-  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .filters select:hover {
@@ -287,14 +263,15 @@ p {
   box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
 }
 
-/* ===========================
-   RESPONSIVE
-=========================== */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--color-text);
+}
+
 @media (min-width: 768px) {
-  .header-container {
-    flex-wrap: nowrap;
-  }
-  .nav-links, .filters {
-    flex-wrap: nowrap;
-  }
+  .header-container { flex-wrap: nowrap; }
+  .nav-links, .filters { flex-wrap: nowrap; }
 }
