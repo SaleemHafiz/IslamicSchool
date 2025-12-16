@@ -1,0 +1,264 @@
+/* ===========================
+   FONTS
+=========================== */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
+
+@font-face {
+  font-family: "Nastaliq";
+  src: url("/src/assets/fonts/Nastaliq.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muhammadi";
+  src: url("/src/assets/fonts/Muhammadi.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===========================
+   THEME VARIABLES
+=========================== */
+:root {
+  --zoom: 1;
+
+  /* Text */
+  --color-text: #1f2937;
+  --color-text-muted: #4b5563;
+  --color-accent: #2563eb;
+  --color-note: #c2410c;
+  --color-quote: #047857;
+
+  /* Backgrounds */
+  --color-bg: #fdf6e3;
+  --color-bg-accent: #fef9f4;
+  --color-bg-note: #fff1f0;
+  --color-bg-quote: #ecfdf5;
+
+  /* Fonts */
+  --font-english: 'Merriweather', serif;
+  --font-urdu: 'Nastaliq', serif;
+  --font-arabic: 'Muhammadi', serif;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Interactivity */
+  --transition-speed: 0.3s;
+}
+
+/* ===========================
+   DARK THEME
+=========================== */
+body[data-theme="dark"] {
+  --color-text: #f3f4f6;
+  --color-text-muted: #d1d5db;
+  --color-accent: #60a5fa;
+  --color-note: #fca5a5;
+  --color-quote: #4ade80;
+
+  --color-bg: #111827;
+  --color-bg-accent: #1f2937;
+  --color-bg-note: #7f1d1d33;
+  --color-bg-quote: #16653433;
+}
+
+/* ===========================
+   GLOBAL RESET
+=========================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: calc(16px * var(--zoom));
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-english);
+  line-height: 1.7;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* ===========================
+   TYPOGRAPHY
+=========================== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-english);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-accent);
+  transition: color var(--transition-speed);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+.urdu { font-family: var(--font-urdu); line-height: 2; }
+.arabic { font-family: var(--font-arabic); line-height: 2; }
+
+/* ===========================
+   TEXT UTILITIES
+=========================== */
+.text-normal { color: var(--color-text); }
+.text-muted { color: var(--color-text-muted); }
+.text-accent { color: var(--color-accent); transition: color var(--transition-speed); }
+.text-note { color: var(--color-note); }
+.text-quote { color: var(--color-quote); }
+
+/* Hover effect for accent text */
+.text-accent:hover { color: #1e40af; cursor: pointer; text-decoration: underline; }
+
+/* ===========================
+   BACKGROUNDS
+=========================== */
+.bg-normal { background-color: var(--color-bg); }
+.bg-accent { background-color: var(--color-bg-accent); }
+.bg-card { background-color: var(--color-bg-accent); transition: transform var(--transition-speed); }
+.bg-card:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
+.bg-note { background-color: var(--color-bg-note); transition: transform var(--transition-speed); }
+.bg-note:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+.bg-quote { background-color: var(--color-bg-quote); transition: transform var(--transition-speed); }
+.bg-quote:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+/* ===========================
+   SPACING UTILITIES
+=========================== */
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+/* ===========================
+   CARD & CONTAINER
+=========================== */
+.card {
+  background-color: var(--color-bg-accent);
+  padding: var(--spacing-md);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all var(--transition-speed) ease;
+  cursor: default;
+}
+
+/* Interactive card hover */
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* ===========================
+   BORDER & DIVIDER
+=========================== */
+.border { border: 1px solid var(--color-bg-accent); }
+.divider {
+  height: 3px;
+  background-color: var(--color-accent);
+  margin: var(--spacing-md) 0;
+  border-radius: 3px;
+  transition: background-color var(--transition-speed);
+}
+
+/* ===========================
+   HEADER STYLING
+=========================== */
+header {
+  background-color: var(--color-bg-accent);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+header .logo {
+  font-family: var(--font-english);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  transition: color 0.3s ease;
+}
+
+header nav a {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+header nav a:hover {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  transform: translateY(-2px);
+}
+
+header nav a.active {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* Filters (select dropdowns) */
+header select {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--color-text-muted);
+  border-radius: 8px;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-english);
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header select:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+header select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+/* Dark theme adjustments */
+body[data-theme="dark"] header {
+  background-color: var(--color-bg-dark-accent);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+body[data-theme="dark"] header .logo {
+  color: var(--color-accent);
+}
+
+body[data-theme="dark"] header nav a {
+  color: var(--color-text-muted);
+}
+
+body[data-theme="dark"] header nav a:hover,
+body[data-theme="dark"] header nav a.active {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+body[data-theme="dark"] header select {
+  background-color: var(--color-bg-dark-accent);
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
+}
