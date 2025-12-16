@@ -1,9 +1,15 @@
+// ===============================
+// Blocks (single file)
+// ===============================
+
 export function InlineRenderer({ inlines }) {
   if (!Array.isArray(inlines)) return null;
+
   return (
     <>
       {inlines.map((inline, i) => {
         if (!inline || typeof inline !== "object") return null;
+
         switch (inline.type) {
           case "bold":
             return (
@@ -11,18 +17,21 @@ export function InlineRenderer({ inlines }) {
                 {inline.text ?? ""}
               </strong>
             );
+
           case "italic":
             return (
               <em key={i} className="text-muted">
                 {inline.text ?? ""}
               </em>
             );
+
           case "highlight":
             return (
               <span key={i} className="bg-accent p-xs rounded">
                 {inline.text ?? ""}
               </span>
             );
+
           case "text":
           default:
             return <span key={i}>{inline.text ?? ""}</span>;
@@ -34,9 +43,11 @@ export function InlineRenderer({ inlines }) {
 
 export function Section({ payload, renderBlock }) {
   if (!payload || typeof payload !== "object") return null;
+
   return (
-    <section className="m-lg">
+    <section className="m-lg space-y-md">
       {payload.heading && <h2>{payload.heading}</h2>}
+
       {Array.isArray(payload.children) &&
         payload.children.map((child, i) =>
           renderBlock ? renderBlock(child, i) : null
@@ -68,25 +79,27 @@ export function Paragraph({ payload, renderBlock }) {
           <InlineRenderer inlines={payload.inlines} />
         </div>
       )}
-      <div style={{ clear: "both" }} /> {/* ensures children column doesn't overflow */}
+
+      <div style={{ clear: "both" }} />
     </div>
   );
 }
 
 export function Note({ payload }) {
   if (!payload?.text) return null;
-  return <div className="card bg-note m-md text-note">⚠️ {payload.text}</div>;
+
+  return <div className="card bg-note p-md text-note">⚠️ {payload.text}</div>;
 }
 
 export function List({ payload }) {
   if (!payload || !Array.isArray(payload.items)) return null;
+
   const Tag = payload.ordered ? "ol" : "ul";
+
   return (
-    <Tag className="m-md">
+    <Tag className="list-disc ps-lg">
       {payload.items.map((item, i) => (
-        <li key={i} className="m-xs">
-          {item}
-        </li>
+        <li key={i}>{item}</li>
       ))}
     </Tag>
   );
@@ -94,8 +107,9 @@ export function List({ payload }) {
 
 export function Image({ payload }) {
   if (!payload?.src) throw new Error("Image block requires src");
+
   return (
-    <div className="m-md">
+    <div>
       <img
         src={payload.src}
         alt={payload.alt ?? ""}
@@ -111,10 +125,12 @@ export function Divider() {
 
 export function Hadith({ payload }) {
   if (!payload) return null;
+
   return (
-    <div className="card bg-card m-md hover:shadow-lg transition">
-      {payload.arabic && <div className="arabic m-sm">{payload.arabic}</div>}
-      {payload.translation && <div className="m-sm">{payload.translation}</div>}
+    <div className="card bg-card p-md hover:shadow-lg transition space-y-sm">
+      {payload.arabic && <div className="arabic">{payload.arabic}</div>}
+      {payload.translation && <div>{payload.translation}</div>}
+
       {(payload.source || payload.grade) && (
         <small className="text-muted">
           {payload.source}
@@ -127,9 +143,10 @@ export function Hadith({ payload }) {
 
 export function Quote({ payload }) {
   if (!payload?.text) return null;
+
   return (
-    <blockquote className="card bg-quote m-md hover:shadow-lg transition">
-      <div className="m-sm">❝ {payload.text}</div>
+    <blockquote className="card bg-quote p-md hover:shadow-lg transition space-y-sm">
+      <div>❝ {payload.text}</div>
       {payload.source && (
         <footer className="text-quote">{payload.source}</footer>
       )}
@@ -139,10 +156,12 @@ export function Quote({ payload }) {
 
 export function Ayah({ payload }) {
   if (!payload) return null;
+
   return (
-    <div className="card bg-card m-md hover:shadow-lg transition">
-      {payload.arabic && <div className="arabic m-sm">{payload.arabic}</div>}
-      {payload.translation && <div className="m-sm">{payload.translation}</div>}
+    <div className="card bg-card p-md hover:shadow-lg transition space-y-sm">
+      {payload.arabic && <div className="arabic">{payload.arabic}</div>}
+      {payload.translation && <div>{payload.translation}</div>}
+
       {payload.surah && payload.ayah && (
         <small className="text-muted">
           Surah {payload.surah}, Ayah {payload.ayah}
@@ -154,23 +173,26 @@ export function Ayah({ payload }) {
 
 export function Warning({ payload }) {
   if (!payload?.text) return null;
-  return <div className="card bg-note m-md text-note">⚠️ {payload.text}</div>;
+
+  return <div className="card bg-note p-md text-note">⚠️ {payload.text}</div>;
 }
 
 export function Audio({ payload }) {
   if (!payload?.src) throw new Error("Audio block requires src");
+
   return (
-    <div className="card bg-card m-md hover:shadow-lg transition">
-      {payload.title && <div className="m-sm text-accent">{payload.title}</div>}
-      <audio controls src={payload.src} className="m-sm w-full" />
+    <div className="card bg-card p-md hover:shadow-lg transition space-y-sm">
+      {payload.title && <div className="text-accent">{payload.title}</div>}
+      <audio controls src={payload.src} className="w-full" />
     </div>
   );
 }
 
 export function Footnote({ payload }) {
   if (!payload?.text) return null;
+
   return (
-    <small className="text-muted m-sm">
+    <small className="text-muted">
       {payload.text}
       {payload.reference && ` (${payload.reference})`}
     </small>

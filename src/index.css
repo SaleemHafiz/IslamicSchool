@@ -275,3 +275,28 @@ p {
   .header-container { flex-wrap: nowrap; }
   .nav-links, .filters { flex-wrap: nowrap; }
 }
+
+/* _______________________ */
+/* Article  */
+
+.article-root {
+  width: 100%;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+  white-space: nowrap;
+}
+
+.meta-item {
+  text-transform: capitalize;
+}
+
+.meta-separator {
+  opacity: 0.4;
+}
