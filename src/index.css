@@ -3,45 +3,46 @@
 /* ===========================
    FONTS
 =========================== */
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Comic+Neue:wght@400;700&family=Playfair+Display:wght@400;700&display=swap");
 
 @font-face {
-  font-family: "Nastaliq";
-  src: url("/src/assets/fonts/Nastaliq.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  font-family: "Nastalique";
+  src: url("/src/assets/fonts/Nastalique.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Muhammadi";
   src: url("/src/assets/fonts/Muhammadi.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
 }
 
 /* ===========================
-   THEME VARIABLES
+   ROOT VARIABLES
 =========================== */
 :root {
   --zoom: 1;
 
-  /* Text */
+  /* Colors */
   --color-text: #1f2937;
   --color-text-muted: #4b5563;
   --color-accent: #2563eb;
   --color-note: #c2410c;
   --color-quote: #047857;
 
-  /* Backgrounds */
   --color-bg: #fdf6e3;
   --color-bg-accent: #fef9f4;
   --color-bg-note: #fff1f0;
   --color-bg-quote: #ecfdf5;
 
-  /* Fonts */
-  --font-english: 'Merriweather', serif;
-  --font-urdu: 'Nastaliq', serif;
-  --font-arabic: 'Muhammadi', serif;
+  /* Fonts (raw) */
+  --font-en-beginner: "Comic Neue", sans-serif;
+  --font-en-medium: "Merriweather", serif;
+  --font-en-advanced: "Playfair Display", serif;
+
+  --font-ur: "Nastalique", serif;
+  --font-ar: "Muhammadi", serif;
+
+  /* Active font */
+  --font-ui: var(--font-en-medium);
 
   /* Spacing */
   --spacing-xs: 4px;
@@ -50,7 +51,7 @@
   --spacing-lg: 24px;
   --spacing-xl: 32px;
 
-  /* Interactivity */
+  /* Motion */
   --transition-speed: 0.3s;
 }
 
@@ -71,29 +72,63 @@ html[data-theme="dark"] {
 }
 
 /* ===========================
+   LANGUAGE + LEVEL → FONT
+=========================== */
+
+/* English (level aware) */
+html[data-language="en"][data-level="beginner"] {
+  --font-ui: var(--font-en-beginner);
+}
+
+html[data-language="en"][data-level="medium"] {
+  --font-ui: var(--font-en-medium);
+}
+
+html[data-language="en"][data-level="advanced"] {
+  --font-ui: var(--font-en-advanced);
+}
+
+/* Urdu (ignore level) */
+html[data-language="ur"] {
+  --font-ui: var(--font-ur);
+  direction: rtl;
+}
+
+/* Arabic (ignore level) */
+html[data-language="ar"] {
+  --font-ui: var(--font-ar);
+  direction: rtl;
+}
+
+/* Default LTR */
+html[data-language="en"] {
+  direction: ltr;
+}
+
+/* ===========================
    GLOBAL RESET
 =========================== */
 * {
   padding: 0;
   box-sizing: border-box;
   font-size: calc(16px * var(--zoom));
-  transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+  transition:
+    background-color var(--transition-speed),
+    color var(--transition-speed),
+    border-color var(--transition-speed),
+    box-shadow var(--transition-speed);
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-english);
+  font-family: var(--font-ui);
   line-height: 1.7;
-  overflow-x: hidden; /* hides horizontal scrollbar */
+  overflow-x: hidden;
 }
 
 body, h1, h2, h3, p, ul, ol, li {
-    margin: 0;
-}
-
-.app {
-  max-width: 100vw;
+  margin: 0;
 }
 
 img {
@@ -104,7 +139,6 @@ img {
    TYPOGRAPHY
 =========================== */
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-english);
   margin-bottom: var(--spacing-sm);
   color: var(--color-accent);
 }
@@ -113,8 +147,24 @@ p {
   margin-bottom: var(--spacing-md);
 }
 
-.urdu { font-family: var(--font-urdu); line-height: 2; }
-.arabic { font-family: var(--font-arabic); line-height: 2; }
+/* Explicit overrides (optional) */
+.ur {
+  font-family: var(--font-ur);
+  line-height: 2;
+  direction: rtl;
+}
+
+.ar {
+  font-family: var(--font-ar);
+  line-height: 2;
+  direction: rtl;
+}
+
+.en {
+  font-family: var(--font-en);
+  line-height: 2;
+  direction: ltr;
+}
 
 /* ===========================
    TEXT UTILITIES
@@ -124,8 +174,6 @@ p {
 .text-accent { color: var(--color-accent); }
 .text-note { color: var(--color-note); }
 .text-quote { color: var(--color-quote); }
-
-.text-accent:hover { color: #1e40af; cursor: pointer; text-decoration: underline; }
 
 /* ===========================
    BACKGROUNDS
@@ -152,15 +200,11 @@ p {
 .p-xl { padding: var(--spacing-xl); }
 
 /* ===========================
-   PARAGRAPH
+   PARAGRAPH (NEWSPAPER STYLE)
 =========================== */
 .paragraph-block {
   position: relative;
-  margin-bottom: 2rem;
-  font-family: "Comic Neue", sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--color-text);
+  margin-bottom: 0rem;
 }
 
 @media (min-width: 768px) {
@@ -183,38 +227,42 @@ p {
   .paragraph-children-column {
     float: none;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     gap: 0.5rem;
-    max-width: 100%;
     margin-bottom: 1rem;
   }
-
-  .paragraph-text { margin: 0; }
-}
-
-.paragraph-child img {
-  width: 100%;
-  height: auto;
-  display: block;
 }
 
 /* ===========================
-   CARD & CONTAINER
+   CARD
 =========================== */
 .card {
   background-color: var(--color-bg-accent);
   padding: var(--spacing-md);
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all var(--transition-speed) ease;
-  cursor: default;
+  transition: all var(--transition-speed);
 }
 
-.card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+/* ===========================
+   ARTICLE META
+=========================== */
+.article-meta {
+  display: flex;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+  margin-bottom: 1rem;
 }
+
+.meta-item {
+  text-transform: capitalize;
+}
+
+.meta-separator {
+  opacity: 0.4;
+}
+
 
 /* ===========================
    HEADER
@@ -231,7 +279,7 @@ p {
 }
 
 .header-container .logo {
-  font-family: var(--font-english);
+  font-family: var(--font-en);
   font-weight: 700;
   font-size: 1.6rem;
   color: var(--color-accent);
@@ -262,7 +310,7 @@ p {
   border: 1px solid var(--color-text-muted);
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-english);
+  font-family: var(--font-en);
   font-size: 0.9rem;
 }
 

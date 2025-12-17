@@ -19,7 +19,7 @@ export default function Header({ meta }) {
       <nav className="nav-links">
         <Link to="/" className={getLinkClass("/")}>Home</Link>
         <Link to="/blocks" className={getLinkClass("/blocks")}>All Blocks</Link>
-        <Link to="/article" className={getLinkClass("/article")}>Article</Link>
+        <Link to="/article/WhoIsAllah/advanced" className={getLinkClass("/article")}>Article</Link>
         {/* <Link to="/about" className={getLinkClass("/about")}>About</Link> */}
       </nav>
 
