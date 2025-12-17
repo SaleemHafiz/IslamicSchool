@@ -35,10 +35,10 @@ export default function Header({ meta }) {
           {t.navbar.articles}
         </Link>
         <Link
-          to="/article/WhoIsAllah/advanced"
-          className={getLinkClass("/article")}
+          to="/about"
+          className={getLinkClass("/about")}
         >
-          {t.navbar.article}
+          {t.navbar.about}
         </Link>
         {/* <Link to="/about" className={getLinkClass("/about")}>About</Link> */}
       </nav>
