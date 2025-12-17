@@ -63,13 +63,13 @@ export default function Header({ meta }) {
         </select>
 
         {/* Subject select (display in user language) */}
-        <select value={subject} onChange={(e) => setSubject(e.target.value)}>
+        {/* <select value={subject} onChange={(e) => setSubject(e.target.value)}>
           {meta.subjects.map((subj) => (
             <option key={subj.en} value={subj.en}>
-              {subj[language]} {/* dynamically show in current language */}
+              {subj[language]} 
             </option>
           ))}
-        </select>
+        </select> */}
 
         {/* Theme toggle using FontAwesome */}
         <button onClick={toggleTheme} className="theme-toggle">
