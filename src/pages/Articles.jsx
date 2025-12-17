@@ -60,7 +60,7 @@ const Articles = () => {
       </div>
 
       {/* Article List */}
-      <div className="grid gap-lg sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {sortedArticles.map((article) => (
           <Link
             key={article.id}
