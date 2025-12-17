@@ -3,7 +3,7 @@
 /* ===========================
    FONTS
 =========================== */
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Comic+Neue:wght@400;700&family=Playfair+Display:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Comic+Neue:wght@400;700&family=Playfair+Display:wght@400;700&family=Gulzar&display=swap");
 
 @font-face {
   font-family: "Nastalique";
@@ -45,7 +45,7 @@
 
   --font-ur: "Nastalique", serif;
   --font-ar: "Muhammadi", serif;
-  --font-pa: "Punjabi", serif;
+  --font-pa: "Gulzar", serif;
 
   /* Active font */
   --font-ui: var(--font-en-intermediate);
