@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
         element: <Articles />,
         loader: async () => {
           const res = await api.get(
-            "https://raw.githubusercontent.com/SaleemHafiz/db/main/islamicschool/meta/articles.json"
+            "https://raw.githubusercontent.com/SaleemHafiz/db/main/islamicschool/meta/meta.json"
           );
           return res.data;
         },

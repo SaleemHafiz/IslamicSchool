@@ -31,8 +31,8 @@ export default function Header({ meta }) {
         <Link to="/" className={getLinkClass("/")}>
           {t.navbar.home}
         </Link>
-        <Link to="/blocks" className={getLinkClass("/blocks")}>
-          {t.navbar.blocks}
+        <Link to="/articles" className={getLinkClass("/articles")}>
+          {t.navbar.articles}
         </Link>
         <Link
           to="/article/WhoIsAllah/advanced"

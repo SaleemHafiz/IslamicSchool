@@ -5,6 +5,7 @@ const strings = {
       home: "Home",
       blocks: "All Blocks",
       article: "Article",
+      articles: "Articles",
       about: "About",
       themeToggle: "Toggle Theme",
     },
@@ -43,6 +44,7 @@ const strings = {
       home: "ہوم",
       blocks: "تمام بلاکس",
       article: "مضمون",
+      articles: "مضامین",
       about: "ہمارے بارے میں",
       themeToggle: "تھیم تبدیل کریں",
     },
@@ -81,6 +83,7 @@ const strings = {
       home: "ہوم",
       blocks: "تمام بلاکس",
       article: "مضمون",
+      articles: "مضامین",
       about: "ساڈے بارے",
       themeToggle: "تھیم بدلاؤ"
     },
