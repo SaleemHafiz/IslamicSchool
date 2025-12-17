@@ -11,6 +11,11 @@
 }
 
 @font-face {
+  font-family: "Punjabi";
+  src: url("/src/assets/fonts/Punjabi.ttf") format("truetype");
+}
+
+@font-face {
   font-family: "Muhammadi";
   src: url("/src/assets/fonts/Muhammadi.ttf") format("truetype");
 }
@@ -34,15 +39,16 @@
   --color-bg-quote: #ecfdf5;
 
   /* Fonts (raw) */
-  --font-en-beginner: "Comic Neue", sans-serif;
-  --font-en-medium: "Merriweather", serif;
+  --font-en-kids: "Comic Neue", sans-serif;
+  --font-en-intermediate: "Merriweather", serif;
   --font-en-advanced: "Playfair Display", serif;
 
   --font-ur: "Nastalique", serif;
   --font-ar: "Muhammadi", serif;
+  --font-pa: "Punjabi", serif;
 
   /* Active font */
-  --font-ui: var(--font-en-medium);
+  --font-ui: var(--font-en-intermediate);
 
   /* Spacing */
   --spacing-xs: 4px;
@@ -76,12 +82,12 @@ html[data-theme="dark"] {
 =========================== */
 
 /* English (level aware) */
-html[data-language="en"][data-level="beginner"] {
-  --font-ui: var(--font-en-beginner);
+html[data-language="en"][data-level="kids"] {
+  --font-ui: var(--font-en-kids);
 }
 
-html[data-language="en"][data-level="medium"] {
-  --font-ui: var(--font-en-medium);
+html[data-language="en"][data-level="intermediate"] {
+  --font-ui: var(--font-en-intermediate);
 }
 
 html[data-language="en"][data-level="advanced"] {
@@ -91,6 +97,12 @@ html[data-language="en"][data-level="advanced"] {
 /* Urdu (ignore level) */
 html[data-language="ur"] {
   --font-ui: var(--font-ur);
+  direction: rtl;
+}
+
+/* Punjab (ignore level) */
+html[data-language="pa"] {
+  --font-ui: var(--font-pa);
   direction: rtl;
 }
 

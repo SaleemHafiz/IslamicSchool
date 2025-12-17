@@ -1,7 +1,6 @@
-// src/utils/strings.js
-
 const strings = {
   en: {
+    appName: "Islamic School",
     navbar: {
       home: "Home",
       blocks: "All Blocks",
@@ -19,11 +18,11 @@ const strings = {
     languages: {
       en: "English",
       ur: "Urdu",
-      ar: "Arabic"
+      pa: "Punjabi"
     },
     levels: {
-      beginner: "Beginner",
-      medium: "Medium",
+      kids: "Kids",
+      intermediate: "Intermediate",
       advanced: "Advanced"
     },
     subjects: {
@@ -39,6 +38,7 @@ const strings = {
   },
 
   ur: {
+    appName: "اسلامک اسکول",
     navbar: {
       home: "ہوم",
       blocks: "تمام بلاکس",
@@ -56,11 +56,11 @@ const strings = {
     languages: {
       en: "انگریزی",
       ur: "اردو",
-      ar: "عربی"
+      pa: "پنجابی"
     },
     levels: {
-      beginner: "ابتدائی",
-      medium: "درمیانی",
+      kids: "ابتدائی",
+      intermediate: "متوسط",
       advanced: "اعلیٰ"
     },
     subjects: {
@@ -75,42 +75,43 @@ const strings = {
     }
   },
 
-  ar: {
+  pa: {
+    appName: "اسلامک اسکول",
     navbar: {
-      home: "الرئيسية",
-      blocks: "كل الوحدات",
-      article: "مقال",
-      about: "معلومات عنا",
-      themeToggle: "تغيير المظهر",
+      home: "ہوم",
+      blocks: "تمام بلاکس",
+      article: "مضمون",
+      about: "ساڈے بارے",
+      themeToggle: "تھیم بدلاؤ"
     },
     article: {
-      readIn: "اقرأ باللغة",
-      switchLevel: "تغيير المستوى",
-      readPreferences: "اقرأ وفق تفضيلاتك",
-      loading: "جارٍ تحميل المقال...",
-      notFound: "المقال غير موجود أو بصيغة غير صحيحة.",
+      readIn: "وچ پڑھو",
+      switchLevel: "سطح بدلو",
+      readPreferences: "اپنی پسند مطابق پڑھو",
+      loading: "مضمون لوڈ ہو رہا ہے...",
+      notFound: "مضمون نہیں ملا یا غیر درست فارمیٹ۔",
     },
     languages: {
-      en: "الإنجليزية",
-      ur: "الأردية",
-      ar: "العربية"
+      en: "انگریزی",
+      ur: "اردو",
+      pa: "پنجابی"
     },
     levels: {
-      beginner: "مبتدئ",
-      medium: "متوسط",
-      advanced: "متقدم"
+      kids: "ابتدائی",
+      intermediate: "متوسط",
+      advanced: "اعلیٰ"
     },
     subjects: {
-      Fiqh: "الفقه",
-      Seerah: "السيرة",
-      Aqeedah: "العقيدة",
-      Hadith: "الحديث",
-      Quran: "القرآن",
-      Tafsir: "التفسير",
-      "Islamic History": "التاريخ الإسلامي",
-      "Dua & Adhkar": "الأدعية والأذكار"
+      Fiqh: "فقہ",
+      Seerah: "سیرت",
+      Aqeedah: "عقیدہ",
+      Hadith: "حدیث",
+      Quran: "قرآن",
+      Tafsir: "تفسیر",
+      "Islamic History": "اسلامی تاریخ",
+      "Dua & Adhkar": "دعائیں و اذکار"
     }
-  },
+  }
 };
 
 export default strings;

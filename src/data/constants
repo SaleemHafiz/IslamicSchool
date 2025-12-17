@@ -1,5 +1,6 @@
 export const languageMap = {
   en: "en",
   ur: "ur",
-  ar: "ar"
+  ar: "ar",
+  pa: "pa",
 };

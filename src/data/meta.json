@@ -1,5 +1,5 @@
 {
-  "languages": ["en", "ur", "ar"],
-  "levels": ["beginner", "intermediate", "advanced"],
+  "languages": ["en", "ur", "ar", "pa"],
+  "levels": ["kids", "intermediate", "advanced"],
   "subjects": ["Islamic Studies", "Arabic", "Urdu"]
 }

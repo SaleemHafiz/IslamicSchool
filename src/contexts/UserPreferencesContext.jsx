@@ -4,8 +4,8 @@ const PreferencesContext = createContext(null);
 
 export function PreferencesProvider({ children }) {
   const [theme, setTheme] = useState("light");        // light | dark
-  const [language, setLanguage] = useState("en"); // en | ur | ar
-  const [level, setLevel] = useState("beginner");     // beginner | medium | advanced
+  const [language, setLanguage] = useState("en"); // en | ur | pa
+  const [level, setLevel] = useState("kids");     // kids | intermediate | advanced
   const [subject, setSubject] = useState("quran");
 
   // ===============================
@@ -39,7 +39,7 @@ export function PreferencesProvider({ children }) {
   root.setAttribute("data-level", level);
 
   // direction → global layout
-  const isRTL = language === "ur" || language === "ar";
+  const isRTL = language === "ur" || language === "pa";
   root.setAttribute("dir", isRTL ? "rtl" : "ltr");
 
   // Force body font update so it changes immediately
