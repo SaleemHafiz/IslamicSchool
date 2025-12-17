@@ -47,8 +47,8 @@ export default function Header({ meta }) {
         {/* Language select */}
         <select value={language} onChange={(e) => setLanguage(e.target.value)}>
           {meta.languages.map((lang) => (
-            <option key={lang} value={lang}>
-              {lang.toUpperCase()}
+            <option key={lang.code} value={lang.code}>
+              {lang[language]} {/* display name in current user language */}
             </option>
           ))}
         </select>

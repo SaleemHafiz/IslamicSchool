@@ -16,7 +16,26 @@ const strings = {
       loading: "Loading article...",
       notFound: "Article not found or invalid format.",
     },
-    // add other UI strings here
+    languages: {
+      en: "English",
+      ur: "Urdu",
+      ar: "Arabic"
+    },
+    levels: {
+      beginner: "Beginner",
+      medium: "Medium",
+      advanced: "Advanced"
+    },
+    subjects: {
+      Fiqh: "Fiqh",
+      Seerah: "Seerah",
+      Aqeedah: "Aqeedah",
+      Hadith: "Hadith",
+      Quran: "Quran",
+      Tafsir: "Tafsir",
+      "Islamic History": "Islamic History",
+      "Dua & Adhkar": "Dua & Adhkar"
+    }
   },
 
   ur: {
@@ -34,6 +53,26 @@ const strings = {
       loading: "مضمون لوڈ ہو رہا ہے...",
       notFound: "مضمون نہیں ملا یا غیر درست فارمیٹ۔",
     },
+    languages: {
+      en: "انگریزی",
+      ur: "اردو",
+      ar: "عربی"
+    },
+    levels: {
+      beginner: "ابتدائی",
+      medium: "درمیانی",
+      advanced: "اعلیٰ"
+    },
+    subjects: {
+      Fiqh: "فقہ",
+      Seerah: "سیرت",
+      Aqeedah: "عقیدہ",
+      Hadith: "حدیث",
+      Quran: "قرآن",
+      Tafsir: "تفسیر",
+      "Islamic History": "اسلامی تاریخ",
+      "Dua & Adhkar": "دعائیں و اذکار"
+    }
   },
 
   ar: {
@@ -51,6 +90,26 @@ const strings = {
       loading: "جارٍ تحميل المقال...",
       notFound: "المقال غير موجود أو بصيغة غير صحيحة.",
     },
+    languages: {
+      en: "الإنجليزية",
+      ur: "الأردية",
+      ar: "العربية"
+    },
+    levels: {
+      beginner: "مبتدئ",
+      medium: "متوسط",
+      advanced: "متقدم"
+    },
+    subjects: {
+      Fiqh: "الفقه",
+      Seerah: "السيرة",
+      Aqeedah: "العقيدة",
+      Hadith: "الحديث",
+      Quran: "القرآن",
+      Tafsir: "التفسير",
+      "Islamic History": "التاريخ الإسلامي",
+      "Dua & Adhkar": "الأدعية والأذكار"
+    }
   },
 };
 
